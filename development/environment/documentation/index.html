@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Documentation - farmOS 2.x</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Documentation";
+    var mkdocs_page_input_path = "development/environment/documentation.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> farmOS 2.x</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">farmOS</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Hosting</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../hosting/migration/">1.x Migration</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../api/">Introduction</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../api/authentication/">Authentication</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../api/changes/">Changes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Development</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Environment</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Getting started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../docker/">Docker</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../postgresql/">PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../drush/">Drush</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../composer/">Composer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../debug/">Debugging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../tests/">Automated tests</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../code/">Coding standards</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Documentation</a>
+    <ul class="current">
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Module</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../module/fields/">Fields</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../module/oauth/">OAuth</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../module/roles/">Roles</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">farmOS 2.x</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Environment &raquo;</li>
+        
+      
+        
+          <li>Development &raquo;</li>
+        
+      
+    
+    <li>Documentation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="documentation">Documentation</h1>
+<p>In addition to the code for farmOS 2.x, this repository includes the source files of the
+documentation which is hosted at <a href="http://2x.farmos.org">http://2x.farmos.org</a>.</p>
+<p>It uses <a href="http://www.mkdocs.org">mkdocs</a> to convert simple markdown files into
+static HTML files.</p>
+<p>To get started contributing to the farmOS 2.x documentation, fork 
+<a href="https://github.com/farmOS/farmOS/tree/2.x">farmOS</a> on Github. Then install mkdocs and
+clone this repo:</p>
+<pre><code>$ brew install python                # For OSX users
+$ sudo apt-get install python-pip    # For Debian/Ubuntu users
+$ sudo pip install mkdocs mkdocs-bootstrap mkdocs-bootswatch
+$ git clone https://github.com/farmOS/farmOS.git farmOS
+$ cd farmOS
+$ git checkout 2.x
+$ git remote add sandbox git@github.com:&lt;username&gt;/farmOS.git
+$ mkdocs serve
+</code></pre>
+<p>Your local farmOS 2.x documentation site should now be available for browsing:
+http://127.0.0.1:8000/. When you find a typo, an error, unclear or missing
+explanations or instructions, hit ctrl-c, to stop the server, and start editing.
+Find the page you’d like to edit; everything is in the docs/ directory. Make
+your changes, commit and push them, and start a pull request:</p>
+<pre><code>$ git checkout -b fix_typo              # Create a new branch for your changes.
+...                                     # Make your changes.
+$ mkdocs build --clean; mkdocs serve    # Go check your changes.
+$ git diff                              # Make sure there aren’t any unintended changes.
+...
+$ git commit -am "Fixed typo."          # Useful commit message are a good habit.
+$ git push sandbox fix_typo             # Push your new branch up to your Github sandbox.
+</code></pre>
+<p>Visit your fork on Github and start a Pull Request.</p>
+<p>For more information on writing and managing documentation with mkdocs, read the
+official mkdocs documentation: <a href="http://www.mkdocs.org">http://www.mkdocs.org</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../module/fields/" class="btn btn-neutral float-right" title="Fields">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../code/" class="btn btn-neutral" title="Coding standards"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../code/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../module/fields/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

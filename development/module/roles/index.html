@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Roles - farmOS 2.x</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Roles";
+    var mkdocs_page_input_path = "development/module/roles.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> farmOS 2.x</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">farmOS</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Hosting</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../hosting/migration/">1.x Migration</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../api/">Introduction</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../api/authentication/">Authentication</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../api/changes/">Changes</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Development</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="#">Environment</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../environment/">Getting started</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../environment/docker/">Docker</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../environment/postgresql/">PostgreSQL</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../environment/drush/">Drush</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../environment/composer/">Composer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../environment/debug/">Debugging</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../environment/tests/">Automated tests</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../environment/code/">Coding standards</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../environment/documentation/">Documentation</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Module</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../fields/">Fields</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../oauth/">OAuth</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Roles</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#managed-roles">Managed Roles</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#creating-a-managed-role">Creating a managed role</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#providing-permissions-for-managed-roles">Providing permissions for managed roles</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">farmOS 2.x</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Module &raquo;</li>
+        
+      
+        
+          <li>Development &raquo;</li>
+        
+      
+    
+    <li>Roles</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="roles">Roles</h1>
+<p>Roles are groups of permissions that can be assigned to users to grant them
+granular access to data and features in farmOS.</p>
+<p>Module developers can define new roles, and specify which permissions they
+should include. farmOS also builds on top of Drupal's role and permission
+system to provide a concept of "Managed Roles".</p>
+<h2 id="managed-roles">Managed Roles</h2>
+<p>The farmOS Access module provides methods to create user roles with permissions
+that are managed for the purposes of farmOS. These roles cannot be modified
+from the Admin Permissions UI. Instead, these roles allow permissions to be
+provided by other modules that want to provide sensible defaults for common
+farmOS roles.</p>
+<h3 id="creating-a-managed-role">Creating a managed role</h3>
+<p>User roles are provided as Drupal Configuration Entities. Managed roles are
+provided in the same way the only difference being that they include
+additional third party settings the farmOS Access module uses to build
+managed permissions. The <code>user.role.*.third_party.farm_acccess</code> schema
+defines the structure of these settings.</p>
+<ul>
+<li><code>access</code>: An optional array of default access permissions.<ul>
+<li><code>config</code>: Boolean that specifies whether the role should have access to
+  configuration. Only grant this to trusted roles.</li>
+<li><code>entity</code>: Access permissions relating to entities.<ul>
+<li><code>view all</code>: Boolean that specifies the role should have access to view
+all bundles of all entity types.</li>
+<li><code>create all</code>: Boolean that specifies the role should have access to
+create all bundles of all entity types.</li>
+<li><code>update all</code>: Boolean that specifies the role should have access to
+update all bundles of all entity types.</li>
+<li><code>delete all</code>: Boolean that specifies the role should have access to
+delete all bundles of all entity types.</li>
+<li><code>type</code>: Access permissions for specific entity types.<ul>
+<li><code>{entity_type}</code>: The id of the entity type. eg: <code>log</code>,<code>asset</code>,
+<code>taxonomy_term</code>, etc.<ul>
+<li><code>{operation}</code>: The operation to grant bundles of this entity
+type. Eg: <code>create</code>, <code>view any</code>, <code>view own</code>, <code>delete any</code>,
+<code>delete own</code>, etc.<ul>
+<li><code>{bundle}</code>: The id of the entity type bundle or <code>all</code> to
+grant the operation permission to all bundles of the entity
+type.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Settings used for the Manager role (full access to all entities + access to
+configuration):</p>
+<pre><code class="language-yaml"># user.role.farm_manager.yml
+... standard role config ...
+third_party_settings:
+  farm_role:
+    access:
+      config: true
+      entity:
+        view all: true
+        create all: true
+        update all: true
+        delete all: true
+</code></pre>
+<p>Example settings to define a "Harvester" role with these limitations:</p>
+<ul>
+<li>View all log entities.</li>
+<li>Only create harvest logs, update harvest logs, and delete own harvest logs.</li>
+<li>View all asset entities.</li>
+<li>Only update planting assets.</li>
+<li>View, edit and delete any taxonomy_term entity.</li>
+</ul>
+<pre><code class="language-yaml"># user.role.farm_harvester.yml
+... standard role config ...
+third_party_settings:
+  farm_role:
+    access:
+      entity:
+        view all: true
+        type:
+          log:
+            create:
+              - harvest
+            update any:
+              - harvest
+            delete own:
+              - harvest
+          asset:
+            update any:
+              - planting
+          taxonomy_term:
+            edit:
+              - all
+            delete:
+              - all
+</code></pre>
+<h3 id="providing-permissions-for-managed-roles">Providing permissions for managed roles</h3>
+<p>Modules can define sensible permissions to any managed roles. These permissions
+are provided by creating a <code>ManagedRolePermissions</code> plugin in the
+<code>module.managed_role_permissions.yml</code> file. The following keys can be provided:</p>
+<ul>
+<li><code>default_permissions</code>: A list of permissions that will be added to <em>all</em>
+  managed roles.</li>
+<li><code>config_permissions</code>: A list of permissions that will be added to managed
+  roles that have access to configuration (<code>config: true</code>).</li>
+<li><code>permission_callbacks</code>: A list of callbacks in controller notation that
+  return an array of permissions to add to managed roles. Callbacks are
+  provided a <code>Role</code> object so that permissions can be applied conditionally
+  based on the managed role's settings.</li>
+</ul>
+<p>As an example, the <code>farm_role</code> module provides the following permissions:</p>
+<pre><code class="language-yaml"># farm_role.managed_role_permissions.yml
+farm_role:
+  default_permissions:
+    - access content
+    - access administration pages
+    - access user profiles
+    - access taxonomy overview
+  config_permissions:
+    - administer taxonomy
+</code></pre>
+<h4 id="permission-callbacks">Permission callbacks</h4>
+<p>Example that adds permissions conditionally based on the role name and settings:</p>
+<p>Plugin definition:</p>
+<pre><code class="language-yaml"># my_module.managed_role_permissions.yml
+my_module:
+  permission_callbacks:
+    - Drupal\my_module\CustomPermissions::permissions
+</code></pre>
+<p>Example implementation of a <code>permission_callback</code>:</p>
+<pre><code class="language-php">&lt;?php
+
+# my_module/src/CustomPermissions.php
+
+namespace Drupal\my_module;
+
+use Drupal\user\RoleInterface;
+
+/**
+ * Example custom permission callback.
+ */
+class CustomPermissions {
+
+  public function permissions(RoleInterface $role) {
+
+    // Array of permissions to return.
+    $perms = [];
+
+    // Add permissions based on role name.
+    if ($role-&gt;id() == 'farm_manager') {
+      $perms = 'my manager permission';
+    }
+
+    // Get the farm_role third party settings from the Role entity.
+    $access_settings = $role-&gt;getThirdPartySetting('farm_role', 'access');
+    $entity_settings = $access_settings['entity'] ?: [];
+
+    // Only add permissions if `update all` and `delete all` are true.
+    if (!empty($entity_settings['update all'] &amp;&amp; $entity_settings['delete all'])) {
+      $perms[] = 'recover all permission';
+    }
+
+    // Return array of permissions.
+    return $perms;
+  }
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../oauth/" class="btn btn-neutral" title="OAuth"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../oauth/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -30,4 +30,4 @@ jobs:
       - name: Run PHPUnit tests
         run: docker-compose exec -u www-data -T test-runner phpunit --verbose --debug --group farm
       - name: Run PHP CodeSniffer
-        run: docker-compose exec -u www-data -T test-runner phpcs /opt/drupal/web/profiles/farm
+        run: docker-compose exec -u www-data -T www phpcs /opt/drupal/web/profiles/farm

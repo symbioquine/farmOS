@@ -61,7 +61,7 @@ RUN cp -p /var/farmOS/web/core/phpunit.xml.dist /var/farmOS/phpunit.xml \
   && sed -i 's|name="BROWSERTEST_OUTPUT_DIRECTORY" value=""|name="BROWSERTEST_OUTPUT_DIRECTORY" value="/var/www/html/sites/simpletest/browser_output"|g' /var/farmOS/phpunit.xml \
   && sed -i 's|\./|\./web/core/|g' /var/farmOS/phpunit.xml \
   && sed -i 's|\.\./web/core/|\./web/|g' /var/farmOS/phpunit.xml \
-  && /var/farmOS/vendor/bin/phpunit --migrate-configuration --configuration /var/farmOS/phpunit.xml \
+  && sed -i '/printerClass=/d' /var/farmOS/phpunit.xml \
   && mkdir -p /var/farmOS/web/sites/simpletest/browser_output
 
 # Change back to the root user.

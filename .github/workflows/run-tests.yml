@@ -19,6 +19,7 @@ jobs:
       # This builds the dev Docker image using the specified FARMOS_VERSION,
       # but notably it does NOT override the default PROJECT_VERSION, so the
       # farmOS Composer project 2.x branch is always used.
+      # No-op change to kick off test action again
       - name: Build farmOS 2.x-dev Docker image
         run: docker build --build-arg FARMOS_REPO=https://github.com/symbioquine/farmOS --build-arg FARMOS_VERSION=2.x-wo-postgres-fsync-v2 --build-arg WWW_DATA_ID=33 -t farmos/farmos:2.x-dev docker/dev
       - name: Create docker-compose.yml

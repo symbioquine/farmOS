@@ -18,12 +18,18 @@ services:
     image: farmos/farmos:2.x-dev
     volumes:
       - './www:/opt/drupal'
+    environment:
+      FARMOS_FS_READY_SENTINEL_FILENAME: /opt/drupal/www-container-fs-ready
 
   test-runner:
     depends_on:
       - www
     image: farmos/farmos:2.x
-    entrypoint: /bin/sh
-    command: -c 'sleep 10 && exec docker-entrypoint.sh apache2-foreground'
+    entrypoint: /bin/bash
+    # Wait both for the dev farmOS container to have finished copying its files and for postgres to be online before launching the test-runner docker-entrypoint.sh
+    # this ensures that the test-runner-container-fs-ready file can be used to wait until everything is ready to run the tests
+    command: -c 'until [ -f /opt/drupal/www-container-fs-ready ]; do sleep 0.1; done && while !</dev/tcp/db/5432; do sleep 0.1; done && exec docker-entrypoint.sh apache2-foreground'
     volumes:
       - './www:/opt/drupal'
+    environment:
+      FARMOS_FS_READY_SENTINEL_FILENAME: /opt/drupal/test-runner-container-fs-ready

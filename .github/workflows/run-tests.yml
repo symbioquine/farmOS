@@ -25,8 +25,8 @@ jobs:
         run: cp docker/docker-compose.testing.yml docker-compose.yml
       - name: Start containers
         run: docker-compose up -d
-      - name: Wait 15 seconds
-        run: sleep 15
+      - name: Wait until test-runner container is ready
+        run: until [ -f ./www/test-runner-container-fs-ready ]; do sleep 0.1; done
       - name: Run PHPUnit tests
         run: docker-compose exec -u www-data -T test-runner phpunit --verbose --debug --group farm
       - name: Run PHP CodeSniffer

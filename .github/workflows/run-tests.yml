@@ -29,9 +29,5 @@ jobs:
       # The test-runner-container-fs-ready file is only created once we expect the containers to be online
       # so waiting for that lets us know it is safe to start the tests
         run: until [ -f ./www/test-runner-container-fs-ready ]; do sleep 0.1; done
-      - name: Run PHPUnit tests
-        run: docker-compose exec -u www-data -T test-runner phpunit --verbose --debug --group farm
-      - name: Run PHP CodeSniffer
-        run: docker-compose exec -u www-data -T www phpcs /opt/drupal/web/profiles/farm
       - name: Test Drush site install
         run: docker-compose exec -u www-data -T www drush site-install --db-url=pgsql://farm:farm@db/farm

@@ -53,6 +53,9 @@ class RouteSubscriber extends RouteSubscriberBase {
     // view.farm_asset.page_location.
     if ($route = $collection->get('view.farm_asset.page_location')) {
       $route->setRequirement('_location_assets_access', 'Drupal\farm_ui_views\Access\FarmLocationAssetViewsAccessCheck::access');
+
+      // Set default asset_type to mark primary tab as active.
+      $route->setDefault('asset_type', 'all');
     }
 
     // Add our _inventory_asset_access requirement to

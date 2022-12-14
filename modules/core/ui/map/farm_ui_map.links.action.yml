@@ -1,5 +1,7 @@
 farm_ui_map.asset.map_popup.farm_asset.page_location:
   route_name: view.farm_asset.page_location
+  route_parameters:
+    asset_type: 'all'
   title: 'View assets in this location'
   appears_on:
     - farm_ui_map.asset.map_popup

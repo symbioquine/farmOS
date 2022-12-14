@@ -113,14 +113,6 @@ function farm_ui_views_views_pre_render(ViewExecutable $view) {
     $title = t('Children of %asset', ['%asset' => $asset->label()]);
   }
 
-  // If this is the farm_asset View and page_location display, include the
-  // asset's name.
-  if ($view->id() == 'farm_asset' && $view->current_display == 'page_location') {
-    $asset_id = $view->args[0];
-    $asset = \Drupal::entityTypeManager()->getStorage('asset')->load($asset_id);
-    $title = t('Assets in %location', ['%location' => $asset->label()]);
-  }
-
   // If this is the farm_log View and page_asset display, include the asset's
   // name.
   if ($view->id() == 'farm_log' && $view->current_display == 'page_asset') {
@@ -132,11 +124,29 @@ function farm_ui_views_views_pre_render(ViewExecutable $view) {
   // If this is a "By type" display and a bundle argument is specified, load
   // the bundle label and set the title.
   $bundle = farm_ui_views_get_bundle_argument($view, $view->current_display, $view->args);
+  $bundles = [];
   if (!empty($bundle)) {
     $bundles = \Drupal::service('entity_type.bundle.info')->getBundleInfo($view->getBaseEntityType()->id());
     if (!empty($bundles[$bundle])) {
       $title = $bundles[$bundle]['label'] . ' ' . $view->getBaseEntityType()->getPluralLabel();
     }
+  }
+
+  // If this is the farm_asset View and page_location display, include the
+  // asset's name.
+  if ($view->id() == 'farm_asset' && $view->current_display == 'page_location') {
+    $asset_id = $view->args[0];
+    $asset = \Drupal::entityTypeManager()->getStorage('asset')->load($asset_id);
+
+    $entity_bundle_label = $view->getBaseEntityType()->getCollectionLabel();
+    if (!empty($bundle) && !empty($bundles[$bundle])) {
+      $entity_bundle_label = $bundles[$bundle]['label'] . ' ' . $view->getBaseEntityType()->getPluralLabel();
+    }
+
+    $title = t('%bundle in %location', [
+      '%bundle' => $entity_bundle_label,
+      '%location' => $asset->label(),
+    ]);
   }
 
   // If this is the farm_asset/farm_log View and page_term display, include

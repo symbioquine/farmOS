@@ -48,9 +48,15 @@ class FarmLocationAssetViewsAccessCheck implements AccessInterface {
    */
   public function access(RouteMatchInterface $route_match) {
 
-    // If there is no "asset" parameter, bail.
+    // If there is no "asset" or "asset_type" parameter, bail.
     $asset_id = $route_match->getParameter('asset');
-    if (empty($asset_id)) {
+    $asset_type = $route_match->getParameter('asset_type');
+    if (empty($asset_id) || empty($asset_type)) {
+      return AccessResult::allowed();
+    }
+
+    // If the asset type is "all", bail.
+    if ($asset_type == 'all') {
       return AccessResult::allowed();
     }
 

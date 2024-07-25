@@ -1,3 +1,9 @@
+# Set the farmOS and composer project repository URLs and versions.
+ARG FARMOS_REPO=https://github.com/farmOS/farmOS.git
+ARG FARMOS_VERSION=3.x
+ARG PROJECT_REPO=https://github.com/farmOS/composer-project.git
+ARG PROJECT_VERSION=3.x
+
 ##
 # Alias the Drupal base image for use in other build stages.
 # We do this so that the Drupal image version only needs to be updated here.
@@ -36,12 +42,6 @@ RUN docker-php-ext-install bcmath
 ##
 # Build common requirements for production and development images.
 FROM baseimage as common
-
-# Set the farmOS and composer project repository URLs and versions.
-ARG FARMOS_REPO=https://github.com/farmOS/farmOS.git
-ARG FARMOS_VERSION=3.x
-ARG PROJECT_REPO=https://github.com/farmOS/composer-project.git
-ARG PROJECT_VERSION=3.x
 
 # Set Apache ServerName directive globally to suppress AH00558 message.
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
@@ -83,6 +83,12 @@ CMD ["apache2-foreground"]
 # Build the production image.
 FROM common as production
 
+# Bring the repos/versions into scope for this build stage
+ARG FARMOS_REPO
+ARG FARMOS_VERSION
+ARG PROJECT_REPO
+ARG PROJECT_VERSION
+
 # Build the farmOS codebase in ${BUILD_PATH} with the --no-dev flag.
 # Change the ownership of the sites directory and copy the farmOS codebase into ${DRUPAL_PATH}.
 RUN mkdir ${BUILD_PATH} \
@@ -92,6 +98,12 @@ RUN mkdir ${BUILD_PATH} \
 
 ## Build the development image.
 FROM common as dev
+
+# Bring the repos/versions into scope for this build stage
+ARG FARMOS_REPO
+ARG FARMOS_VERSION
+ARG PROJECT_REPO
+ARG PROJECT_VERSION
 
 # Install and enable XDebug extension.
 RUN yes | pecl install xdebug \

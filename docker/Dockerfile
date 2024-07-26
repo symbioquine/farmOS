@@ -9,7 +9,7 @@ ARG PROJECT_VERSION=3.x
 ##
 # Alias the Drupal base image for use in other build stages.
 # We do this so that the Drupal image version only needs to be updated here.
-FROM ${ARCH}drupal:10.2 as baseimage
+FROM ${ARCH}drupal:10.2 AS baseimage
 
 # Define common paths.
 # BUILD_PATH is where the farmOS codebase will be built.
@@ -23,7 +23,7 @@ ENV DRUPAL_PATH=/opt/drupal
 
 ##
 # Build/install PHP extensions.
-FROM baseimage as php-dependencies
+FROM baseimage AS php-dependencies
 
 # Build and install the GEOS PHP extension.
 # See https://git.osgeo.org/gitea/geos/php-geos
@@ -43,7 +43,7 @@ RUN docker-php-ext-install bcmath
 
 ##
 # Build common requirements for production and development images.
-FROM baseimage as common
+FROM baseimage AS common
 
 # Set Apache ServerName directive globally to suppress AH00558 message.
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
@@ -83,7 +83,7 @@ CMD ["apache2-foreground"]
 
 ##
 # Build the production image.
-FROM common as production
+FROM common AS production
 
 # Bring the repos/versions into scope for this build stage
 ARG FARMOS_REPO
@@ -99,7 +99,7 @@ RUN mkdir ${BUILD_PATH} \
   && rm -r ${DRUPAL_PATH} && cp -rp ${BUILD_PATH} ${DRUPAL_PATH}
 
 ## Build the development image.
-FROM common as dev
+FROM common AS dev
 
 # Bring the repos/versions into scope for this build stage
 ARG FARMOS_REPO

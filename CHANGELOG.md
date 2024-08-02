@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- [Build multi-platform Docker images/manifests #864](https://github.com/farmOS/farmOS/pull/864)
+
 ### Changed
 
 - [Single Dockerfile using multi-stages for production and dev image #855](https://github.com/farmOS/farmOS/pull/855)

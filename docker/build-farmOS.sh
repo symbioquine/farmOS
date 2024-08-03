@@ -28,9 +28,9 @@ export COMPOSER_HOME="$(mktemp -d)"
 # If FARMOS_VERSION is a valid semantic versioning string, we assume that it is
 # a tagged version.
 IS_TAGGED_RELEASE=false
-if [[ "${FARMOS_VERSION}" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-((0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*))*))?(\+([0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*))?$ ]]; then
-  IS_TAGGED_RELEASE=true
-fi
+# if [[ "${FARMOS_VERSION}" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-((0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*))*))?(\+([0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*))?$ ]]; then
+#   IS_TAGGED_RELEASE=true
+# fi
 
 # Add the farmOS repository to composer.json (if this is not a tagged release).
 if [ "${IS_TAGGED_RELEASE}" = false ]; then
@@ -46,7 +46,7 @@ elif [ "${IS_TAGGED_RELEASE}" = true ]; then
   FARMOS_COMPOSER_VERSION="${FARMOS_VERSION}"
 # Otherwise, we assume that FARMOS_VERSION is a branch, and prepend "dev-".
 else
-  FARMOS_COMPOSER_VERSION="dev-${FARMOS_VERSION}"
+  FARMOS_COMPOSER_VERSION="3.x-dev"
 fi
 composer require farmos/farmos:${FARMOS_COMPOSER_VERSION} --no-install
 
